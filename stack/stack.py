@@ -1,3 +1,5 @@
+from doubly_linked_list import DoublyLinkedList
+
 """
 A stack is a data structure whose primary purpose is to store and
 return elements in Last In First Out order. 
@@ -13,13 +15,21 @@ return elements in Last In First Out order.
 class Stack:
     def __init__(self):
         self.size = 0
-        # self.storage = ?
+        self.storage = DoublyLinkedList()
 
     def __len__(self):
-        pass
+        return self.size
 
     def push(self, value):
-        pass
+        #add an elemnt to the front of our aray
+        self.size +=1
+        self.storage.add_to_tail(value)
 
     def pop(self):
-        pass
+        #check if empty
+        if self.size  == 0:
+          return None
+        # remove the value from the head of our list
+        self.size -= 1
+        value = self.storage.remove_from_head()
+        return value
