@@ -99,17 +99,24 @@ class DoublyLinkedList:
         self.delete(node)
         self.add_to_tail(value)
 
+
+      def delete(self):
+        if self.prev:
+            self.prev.next = self.next
+        if self.next:
+            self.next.prev = self.prev   
+
     """
     Deletes the input node from the List, preserving the 
     order of the other elements of the List.
     """
     def delete(self, node):
-        self.length -= 1
-        # if trying to delete when no nodes exist
-        if not self.head and not self.tail:
+        # the list is empty
+        if  self.head  is None and not self.tail is None:
             return
-        # single node case
-        if self.head == self.tail:
+        # the list is only one node
+        self.length -= 1
+        if self.head == self.tail and node == self.head:
             self.head = None
             self.tail = None
         # if deleting head
